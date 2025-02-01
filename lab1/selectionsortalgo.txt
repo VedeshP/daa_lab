@@ -1,0 +1,7 @@
+for (i = 0 to n)
+    min = i
+    for (j = i to n)
+        if (arr[j] < arr[min])
+            min = j
+    if (min != i)
+        swap(arr[i], arr[min])

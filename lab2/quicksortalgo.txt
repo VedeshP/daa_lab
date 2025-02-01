@@ -1,0 +1,15 @@
+pivot = arr[low]
+i = low
+j = high
+
+while (i < j)
+    while (arr[i] <= pivot)
+        i++
+    while (arr[j] > pivot)
+        j--
+    if (i < j)
+        swap(arr[i], arr[j])
+arr[low] = arr[j]
+arr[j] = pivot
+return j
+# Partititon algorithm 

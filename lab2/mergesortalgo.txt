@@ -1,0 +1,19 @@
+     i = low
+    j = mid + 1
+    k = 0
+    while (i <= mid and j <= high)
+        if (arr[i] <= arr[j])
+            B[k++] = arr[i++]
+        else
+            B[k++] = arr[j++]
+    if(i > mid)
+        while(j <= high)
+            B[k++] = arr[j++]
+    else if (j > high)
+        while (i <= mid)
+            B[k++] = arr[i++]
+    for (x from 0 to high - low + 1)
+        arr[low + x] = B[x]
+algorithm merge(arr, low, mid, high)
+
+the above can be optimized for when arr[mid] < arr[mid + 1] then we just copy both array to main array and return

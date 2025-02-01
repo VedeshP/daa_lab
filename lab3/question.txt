@@ -1,0 +1,5 @@
+use singly linked list to implement integers of unlimited size. each one of the node list should store one digit of the integer.
+you should implement addition, subtraction, multiplication, and exponential operations
+limit exponenets to be positive integers
+
+what is the asymptotic running time for each operations, expressed in terms of the number of digits for the two operands of each function
