@@ -148,6 +148,10 @@ Node* add_padding_back(Node* head, int padding)
     {
         return create_node(0);
     }
+    else if (!temp && (padding <= 0))
+    {
+        return NULL;
+    }
 
     while (temp->next != NULL)
     {
@@ -327,6 +331,7 @@ Node* llmuliter(Node* head1, Node* head2, int carry)
     {   
         Node* result = NULL;
         result = add_padding_back(result, ++pad_count);
+        trav1 = revhead1;
         while (trav1)
         {   
             printlist(result);
