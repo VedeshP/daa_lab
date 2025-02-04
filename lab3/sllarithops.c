@@ -372,7 +372,7 @@ Node* llmuliter(Node* head1, Node* head2, int carry)
     // so i am retrieving head1 again with the reversed list 
     // although i don't think this is good practice - it is working
     // i suspect that this is due to the fact that in reverselist function we are taking current = head
-    // which may be changing the head - unintentionally
+    // which may be changing the head - unintentionally - deepseek - deepthink r1 can help identify that
     // another approach could be to first create a copy of the head and then reverse both the lists
     // also freelist function needs to be implemented: 22:34 04-02-2025
     head1 = reverselist(revhead1);
