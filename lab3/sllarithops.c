@@ -73,8 +73,8 @@ int main (void)
 
     // Node* head3 = lladditer(head1, head2, 0);
     // Node* head3 = llsubiter(head1, head2, 0);
-    // Node* head3 = llmuliter(head1, head2, 0);
-    Node* head3 = llexpiter(head1, 4);
+    Node* head3 = llmuliter(head1, head2, 0);
+    // Node* head3 = llexpiter(head1, 4);
     printlist(head3);
 
     return 0;
@@ -366,6 +366,17 @@ Node* llmuliter(Node* head1, Node* head2, int carry)
         final_result = lladditer(final_result, result, 0);
         trav2 = trav2->next;
     }
+
+    // somehow reverselist function is changing head1 and just keeping it to be its first node 
+    // i.e. for 123 - it is making it 1
+    // so i am retrieving head1 again with the reversed list 
+    // although i don't think this is good practice - it is working
+    // i suspect that this is due to the fact that in reverselist function we are taking current = head
+    // which may be changing the head - unintentionally
+    // another approach could be to first create a copy of the head and then reverse both the lists
+    // also freelist function needs to be implemented: 22:34 04-02-2025
+    head1 = reverselist(revhead1);
+    head2 = reverselist(revhead2);
     
     return final_result;
 }
