@@ -71,7 +71,8 @@ int main (void)
     }
 
     // Node* head3 = lladditer(head1, head2, 0);
-    Node* head3 = llsubiter(head1, head2, 0);
+    // Node* head3 = llsubiter(head1, head2, 0);
+    Node* head3 = llmuliter(head1, head2, 0);
     printlist(head3);
 
     return 0;
@@ -143,6 +144,11 @@ Node* add_padding(Node *head, int padding)
 Node* add_padding_back(Node* head, int padding)
 {
     Node* temp = head;
+    if (!temp && padding > 0)
+    {
+        return create_node(0);
+    }
+
     while (temp->next != NULL)
     {
         temp = temp->next;
@@ -308,13 +314,40 @@ Node* llmuliter(Node* head1, Node* head2, int carry)
     Node* revhead2 = reverselist(head2);
     // printlist(revhead2);
 
-    Node* result = NULL;
+    Node* final_result = NULL;
 
     int product;
 
+    Node* trav1 = revhead1;
+    Node* trav2 = revhead2;
 
+    int pad_count = -1;
+
+    while (trav2)
+    {   
+        Node* result = NULL;
+        result = add_padding_back(result, ++pad_count);
+        while (trav1)
+        {   
+            printlist(result);
+            // result = add_padding(result, ++pad_count);
+            product = carry;
+            product += trav1->data * trav2->data;
+            carry = product / 10;
+
+            Node* newnode = create_node(product % 10);
+
+            newnode->next = result;
+            result = newnode;
+
+            trav1 = trav1->next;
+        }
+        printlist(result);
+        final_result = lladditer(final_result, result, 0);
+        trav2 = trav2->next;
+    }
     
-    return result;
+    return final_result;
 }
 
 // you need to learn git and github very nicely actually it is very complex and not an easy task
