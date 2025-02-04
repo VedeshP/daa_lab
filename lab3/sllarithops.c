@@ -18,6 +18,7 @@ Node* lladditer(Node* head1, Node* head2, int carry);
 Node* llsubiter(Node* head1, Node* head2, int borrow);
 Node* llmuliter(Node* head1, Node* head2, int carry);
 Node* add_padding_back(Node* head, int padding);
+Node* llexpiter(Node* head, int power);
 
 int main (void)
 {
@@ -72,7 +73,8 @@ int main (void)
 
     // Node* head3 = lladditer(head1, head2, 0);
     // Node* head3 = llsubiter(head1, head2, 0);
-    Node* head3 = llmuliter(head1, head2, 0);
+    // Node* head3 = llmuliter(head1, head2, 0);
+    Node* head3 = llexpiter(head1, 4);
     printlist(head3);
 
     return 0;
@@ -236,25 +238,25 @@ Node* lladditer(Node* head1, Node* head2, int carry)
     return result;
 }
 
-Node* lladd(Node *head1, Node *head2, int carry)
-{
-    if (head1 == NULL && head2 == NULL)
-    {
-        return NULL;
-    }
+// Node* lladd(Node *head1, Node *head2, int carry)
+// {
+//     if (head1 == NULL && head2 == NULL)
+//     {
+//         return NULL;
+//     }
 
-    int sum = carry; 
-    if (head1) sum += head1->data;
-    if (head2) sum += head2->data;
+//     int sum = carry; 
+//     if (head1) sum += head1->data;
+//     if (head2) sum += head2->data;
 
-    carry = sum / 10;
+//     carry = sum / 10;
 
-    struct Node* newnode = create_node(sum % 10);
+//     struct Node* newnode = create_node(sum % 10);
 
-    newnode->next = lladd(head1 ? head1->next : NULL, head2 ? head2->next : NULL, carry);
+//     newnode->next = lladd(head1 ? head1->next : NULL, head2 ? head2->next : NULL, carry);
 
-    return newnode;
-}
+//     return newnode;
+// }
 
 Node* llsubiter(Node* head1, Node* head2, int borrow)
 {
@@ -330,11 +332,15 @@ Node* llmuliter(Node* head1, Node* head2, int carry)
     while (trav2)
     {   
         Node* result = NULL;
-        result = add_padding_back(result, ++pad_count);
+        // since we are adding null - we need to change the if condition inside padding function
+        // result = add_padding_back(result, ++pad_count);
+        // so i just found out that the add padding back function was useless
+        result = add_padding(result, ++pad_count);
         trav1 = revhead1;
+        carry = 0;
         while (trav1)
         {   
-            printlist(result);
+            // printlist(result);
             // result = add_padding(result, ++pad_count);
             product = carry;
             product += trav1->data * trav2->data;
@@ -347,7 +353,16 @@ Node* llmuliter(Node* head1, Node* head2, int carry)
 
             trav1 = trav1->next;
         }
-        printlist(result);
+
+        // bhai carry to dekho
+        if (carry > 0)
+        {
+            Node* newnode = create_node(carry);
+            newnode->next = result;
+            result = newnode;
+        }
+
+        // printlist(result);
         final_result = lladditer(final_result, result, 0);
         trav2 = trav2->next;
     }
@@ -355,4 +370,24 @@ Node* llmuliter(Node* head1, Node* head2, int carry)
     return final_result;
 }
 
+Node* llexpiter(Node* head, int power)
+{
+    if (power < 0)
+    {
+        printf("Power less than 1 not supported");
+        return NULL;
+    }
+    else if (power == 0)
+    {
+        return create_node(1);
+    }
+
+    Node* result = create_node(1);
+    for (int i = 0; i < power; i++)
+    {
+        result = llmuliter(result, head, 0);
+    }
+
+    return result;
+}
 // you need to learn git and github very nicely actually it is very complex and not an easy task
