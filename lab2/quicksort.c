@@ -7,7 +7,8 @@ int partition(int arr[], int low, int high);
 int main(void)
 {
     clock_t start, end;
-    int arr[] = {7, 4, 8, 9, 0, 1, 2, 5, 3, 6};
+    // int arr[] = {7, 4, 8, 9, 0, 1, 2, 5, 3, 6};
+    int arr[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
 
     int len = sizeof(arr) / sizeof(int);
     int low = 0;
