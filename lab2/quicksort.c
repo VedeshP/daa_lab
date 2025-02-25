@@ -46,9 +46,9 @@ int partition(int arr[], int low, int high)
 
     while (i < j)
     {
-        while (arr[i] <= pivot)
+        while (arr[i] <= pivot && i <= high)
             i++;
-        while (arr[j] > pivot)
+        while (arr[j] > pivot && j >= low)
             j--;
 
         if (i < j)

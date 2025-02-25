@@ -73,8 +73,8 @@ int main (void)
 
     // Node* head3 = lladditer(head1, head2, 0);
     // Node* head3 = llsubiter(head1, head2, 0);
-    Node* head3 = llmuliter(head1, head2, 0);
-    // Node* head3 = llexpiter(head1, 4);
+    // Node* head3 = llmuliter(head1, head2, 0);
+    Node* head3 = llexpiter(head1, 9);
     printlist(head3);
 
     return 0;
@@ -183,6 +183,10 @@ Node* reverselist(Node* head)
         prev = current;
         current = next;
     }
+
+    // could be better to create a new list as we need to use list again so after reversal we cannot access whole list with head pointer
+    // head->1->2->3->4->X
+    // after reversal: head->1->X
 
     return prev;
 }

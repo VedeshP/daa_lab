@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+#include <math.h>
+
 typedef struct City {
     char* name;
     int x;
@@ -21,6 +23,7 @@ void insert_city_arr(Arrdb* arrdb, City* city);
 void delete_by_name(Arrdb* arrdb, char* name);
 void delete_by_coordinates(Arrdb* arrdb, int x, int y);
 void print_arr_db(Arrdb* arrdb);
+void print_within_dist(Arrdb* arrdb, int x, int y, int dist);
 
 int main(void)
 {   
@@ -46,6 +49,8 @@ int main(void)
     print_arr_db(arrdb);
     delete_by_coordinates(arrdb, 9, 4);
     print_arr_db(arrdb);
+
+    print_within_dist(arrdb, 5, 7, 10);
 
     return 0;
 }
@@ -149,4 +154,28 @@ void print_arr_db(Arrdb* arrdb)
     }
     printf("Size of array database: %d\n", arrdb->size);
     printf("Capacity of array database: %d\n", arrdb->capacity);
+}
+
+void print_within_dist(Arrdb* arrdb, int x, int y, int dist)
+{
+    if (arrdb->size == 0)
+    {
+        printf("Empty database");
+        return;
+    }
+
+    printf("Cities within %d units of (%d, %d):\n", dist, x, y);
+
+    for (int i = 0; i < arrdb->size; i++)
+    {
+        int diffx = arrdb->citiesarr[i]->x -x;
+        int diffy = arrdb->citiesarr[i]->y -y;
+
+        float distance = sqrt(pow(diffx, 2) - pow(diffy, 2));
+
+        if (distance <= dist)
+        {
+            printf("%s %d %d\n", arrdb->citiesarr[i]->name, arrdb->citiesarr[i]->x, arrdb->citiesarr[i]->y);
+        }
+    }
 }

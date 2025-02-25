@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+#include <math.h>
+
 typedef struct City {
     char* name;
     int x;
@@ -27,6 +29,7 @@ void delete_by_name(Lldb* lldb, char* name);
 void delete_by_coordinates(Lldb* lldb, int x, int y);
 Node* search_by_name(Lldb* lldb, char* name);
 Node* search_by_coordinates(Lldb* lldb, int x, int y);
+void print_within_dist(Lldb* lldb, int x, int y, int dist);
 
 int main(void)
 {
@@ -59,6 +62,8 @@ int main(void)
     printf("%s %d %d\n", somecity->city->name, somecity->city->x, somecity->city->y);
     somecity = search_by_coordinates(lldb, 9, 9);
     printf("%s %d %d\n", somecity->city->name, somecity->city->x, somecity->city->y);
+
+    print_within_dist(lldb, 5, 7, 10);
 
     return 0;
 }
@@ -214,7 +219,29 @@ Node* search_by_coordinates(Lldb* lldb, int x, int y)
     return NULL;
 }
 
-// get_by_coordinates()
-// {
-    
-// }
+void print_within_dist(Lldb* lldb, int x, int y, int dist)
+{
+    if (lldb->head == NULL)
+    {
+        printf("Database Empyt\n");
+        return;
+    }
+
+    printf("Cities within %d units of (%d, %d):\n", dist, x, y);
+
+    Node* trav = lldb->head;
+    while (trav)
+    {
+        int diffx = trav->city->x - x;
+        int diffy = trav->city->y - y;
+
+        float distance = sqrt(pow(diffx, 2) - pow(diffy, 2));
+
+        if (distance <= dist)
+        {
+            printf("%s %d %d\n",  trav->city->name, trav->city->x, trav->city->y);
+        }
+
+        trav = trav->next;
+    }
+}
