@@ -211,3 +211,6 @@ int comp_dur(const void* a, const void* b)
 {
     return (((Process *)a)->duration - ((Process *)b)->duration);
 }
+
+// can implement using the below strategy
+// https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/editorial/
