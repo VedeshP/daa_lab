@@ -1,0 +1,15 @@
+09:21 30-08-2024
+
+Stack
+
+full
+empty
+insert
+delete
+print top ele
+
+print all ele of stack - call after every insert and delete op
+
+Currently implemented with array
+
+

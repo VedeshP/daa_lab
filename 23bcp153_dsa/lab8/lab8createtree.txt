@@ -1,0 +1,44 @@
+lab8createtree
+
+dynamic creation of tree
+
+createtree
+enter node value 
+scanf
+if data = -1
+return null
+else
+
+ptr = createnode(data)
+
+ptr.left = createtree
+ptr.right = createtree
+return ptr;
+
+in main call
+
+root = createtree
+
+postorder iterative /w 1 stack and 2 stack
+
+1 stack 
+first right child push then root push
+
+when all nodes are done 
+print check if node has right child 
+if right child and stack top are same then
+if it has then get the right child (subtree) - pop it and push the root of it to stack
+stop at underflow 
+we are checking using these stack whether the right child/subtree is processed or not
+
+
+2 stack method 
+
+stack 2 - root push
+while stack 1 is not empty
+push left 1
+push right 1
+
+stack 2 pop all
+
+

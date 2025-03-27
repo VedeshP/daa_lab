@@ -1,0 +1,35 @@
+can do bfs, dfs in tree 
+
+as tree is also a graph
+
+queue 
+
+status array 
+
+status 
+1- ready 
+2- waiting 
+3 - processed
+
+
+dfs use stack instead of queue
+also use status array lly
+
+array representation 
+adjacency matrix 
+
+while q is not empty 
+
+a = deq(q)
+print(a)
+status[a] = 3
+for (i = 1 to 5)
+    if (A[a, i] == 1) and status[i] == 1
+        enq(Q, i)
+        status[i] = 2
+
+
+tc = O(n^2)
+i.e. O(V+E)
+
+bring your laptop in evaluation any day 4 to 5 

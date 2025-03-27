@@ -1,0 +1,12 @@
+Just Queue lab
+
+Circular Queue Implementation 
+
+full - f = 1, r = n and f = r+1
+empty - f = -1
+enq - r = r+1
+deq- f = f+1
+print f and r -> q[f], q[r]
+print all content of q - 
+f < r f to r
+else f to n and then 1 to r 

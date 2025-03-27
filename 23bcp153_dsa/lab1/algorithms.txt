@@ -1,0 +1,40 @@
+09:55 02-08-2024
+
+prepare word file 
+aim theory of algorithm/ structure - 3-4 lines 
+program 
+output
+time complexity and how did you find it ?
+
+linear search
+binary search 
+
+bubble sort 
+
+selection sort 
+
+logic:-
+for 0 to n -1 
+	min = index (0)
+	for j from 1 to n - 1
+		if a[j] < a[min]
+	swap a[j] with a[i]
+
+complexity n-1 n-2 n-3 ... 1 
+add n(n-1)/2 = f(n)
+f(n) = O(n2)
+best case and worst case both - n2
+
+insertion sort
+
+for i = 1 to 6 
+	key = a[i]
+	j = i - 1
+	while (j >= 0 && a[j[ > key)
+		a[j+1] = a[j]
+		j--
+	a[j+1] = key
+
+best case - n
+worst case n2
+

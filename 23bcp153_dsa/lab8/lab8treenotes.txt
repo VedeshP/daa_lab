@@ -1,0 +1,9 @@
+lab8treenotes
+
+for now make static tree and do the inorder, preorder, postorder for the tree 
+(also use the create node function for both list lib and tree lib - check what to do for same name functions for create node)
+
+you can also use array 
+(2k+1... whatever)
+
+use stack for operations - best way - linked list
