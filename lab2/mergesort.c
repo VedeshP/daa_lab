@@ -84,3 +84,46 @@ void merge(int arr[], int low, int mid, int high)
 
     return;
 }
+
+// void merge(int arr[], int low, int mid, int high)
+// {
+//     int i = low, j = mid + 1, k = 0;
+//     int size = high - low + 1;
+//     int arrB[size];
+
+//     while (i <= low && j <= high)
+//     {
+//         if (arr[i] < arr[j])
+//         {
+//             arrB[k] = arr[i];
+//             i++; k++;
+//         }
+//         else
+//         {
+//             arrB[k] = arr[j];
+//             j++; k++;
+//         }
+//     }
+
+//     if (i > mid)
+//     {
+//         while (j <= high)
+//         {
+//             arrB[k] = arr[j];
+//             j++; k++;
+//         }
+//     }
+//     else if (j > high)
+//     {
+//         while (i <= mid)
+//         {
+//             arrB[k] = arr[k];
+//             i++; k++;
+//         }
+//     }
+
+//     for (int x = 0; x < size; x++)
+//     {
+//         arr[low + x] = arrB[x];
+//     }
+// }
